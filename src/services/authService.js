@@ -1,4 +1,5 @@
 import api from "./axios";
+import { getCookie } from "./helper";
 
 export const getCsrfToken = async () => {
   const response = await api.get("/auth/csrf/");
@@ -16,6 +17,8 @@ export const getCurrentUser = async () => {
 };
 
 export const logoutUser = async () => {
+  const csrfToken = getCookie("csrftoken");
+
   const response = await api.post("/auth/logout/");
   return response.data;
 };
