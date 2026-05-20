@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getPosts } from "../services/postService";
 
-function PostList() {
+function PostList({ refreshKey }) {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -9,6 +9,7 @@ function PostList() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
+        setLoading(true);
         const data = await getPosts();
         setPosts(data);
       } catch (error) {
@@ -20,7 +21,7 @@ function PostList() {
     };
 
     fetchPosts();
-  }, []);
+  }, [refreshKey]);
 
   if (loading) {
     return <p>Posztok betöltése...</p>;
