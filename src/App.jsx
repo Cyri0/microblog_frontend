@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getCsrfToken, getCurrentUser } from './services/authService';
 import LoginForm from './components/LoginForm';
 import LogoutButton from './components/LogoutButton';
+import PostList from './components/PostList';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -13,8 +14,6 @@ const App = () => {
         await getCsrfToken();
 
         try {
-          console.log("FUTOK");
-          
           const userData = await getCurrentUser();
           
           setUser(userData);
@@ -42,6 +41,7 @@ const App = () => {
       { user && <>
       <p>Bejelentkezve: <strong>{user.username}</strong></p>
       <LogoutButton onLoggedOut={()=>setUser(null)} />
+      <PostList />
       </>}
     </div>
   )
