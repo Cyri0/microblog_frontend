@@ -35,7 +35,7 @@ function LoginForm({ onLoginSuccess }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="loginForm">
       <h2>Bejelentkezés</h2>
 
       <div>

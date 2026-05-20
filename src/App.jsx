@@ -32,28 +32,33 @@ const App = () => {
   }, []);
 
   if (loading) {
-    return <p>Betöltés...</p>;
+    return <main><i className="fa-solid fa-spinner animatedSpinner"></i></main>;
   }
 
   return (
-    <div>
+    <main>
       {user === null && (
         <LoginForm onLoginSuccess={(userData) => setUser(userData)} />
       )}
 
       {user && (
         <>
+        <nav>
           <p>
             Bejelentkezve: <strong>{user.username}</strong>
           </p>
           <LogoutButton onLoggedOut={() => setUser(null)} />
+        </nav>
+        <section className="feed">
+
           <CreatePostForm
             onPostCreated={() => setRefreshPostsKey((prev) => prev + 1)}
-          />
+            />
           <PostList refreshKey={refreshPostsKey} />
+            </section>
         </>
       )}
-    </div>
+    </main>
   );
 };
 

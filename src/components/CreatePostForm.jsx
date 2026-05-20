@@ -33,7 +33,7 @@ function CreatePostForm({ onPostCreated }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="createPost">
       <h2>Új poszt</h2>
 
       <div>
@@ -48,7 +48,7 @@ function CreatePostForm({ onPostCreated }) {
       {error && <p>{error}</p>}
 
       <button type="submit" disabled={submitting}>
-        {submitting ? "Küldés..." : "Poszt létrehozása"}
+        {submitting ? <i className="fa-solid fa-spinner animatedSpinner"></i> : "Poszt létrehozása"}
       </button>
     </form>
   );

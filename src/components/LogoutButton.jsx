@@ -10,7 +10,7 @@ function LogoutButton({ onLoggedOut }) {
     }
   };
 
-  return <button onClick={handleLogout}>Kijelentkezés</button>;
+  return <button className="logoutButton" onClick={handleLogout}>Kijelentkezés</button>;
 }
 
 export default LogoutButton;
